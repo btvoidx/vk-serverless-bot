@@ -5,8 +5,9 @@ from os import environ
 app = Sanic(name='api')
 
 @app.route('/')
-async def index(request):
-	return text('Hello world!')
+@app.route('/<path:path>')
+async def index(request, path=''):
+	return text(f'Hello {path}!')
 
 @app.route('/callback', methods=['POST'])
 async def callback(request):
