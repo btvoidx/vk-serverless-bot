@@ -4,12 +4,7 @@ from os import environ
 
 app = Sanic(name='api')
 
-@app.route('/')
-@app.route('/<path:path>')
-async def index(request, path=''):
-	return text(f'Hello {path}!')
-
-@app.route('/callback', methods=['POST'])
+@app.route('/api/callback', methods=['POST'])
 async def callback(request):
 	if request.json.get('type') == 'confirmation':
 		return text(environ('confirmation_token'))
