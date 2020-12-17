@@ -1,6 +1,7 @@
 from sanic import Sanic
 from sanic.response import text
 from os import environ
+import requests
 
 app = Sanic(name='api')
 
