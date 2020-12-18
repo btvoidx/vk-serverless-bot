@@ -14,8 +14,8 @@ async def callback(request):
 		return text(environ.get('confirmation_token', ''))
 	
 	elif request.json.get('type') == 'message_new':
-		msg = request.json['object']['text']
-		from_id = request.json['object']['from_id']
+		msg = request.json['object']['message']['text']
+		from_id = request.json['object']['message']['from_id']
 
 		if msg:
 			requests.get(f"https://api.vk.com/method/messages.send?message={msg}&user_id={from_id}&access_token={environ.get('access_token', '')}&v=5.78").json()
